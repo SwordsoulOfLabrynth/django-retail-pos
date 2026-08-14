@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Sign in | Retail POS{% endblock %}
+{% block content %}
+<div class="row justify-content-center pt-5"><div class="col-md-6 col-lg-5"><div class="card shadow-sm overflow-hidden"><div class="login-banner"><span class="brand-mark">R</span><div><strong>Retail<span>POS</span></strong><small>Simple sales. Clear control.</small></div></div><div class="card-body p-4 p-md-5">
+  <h1 class="h3 mb-1">Welcome back</h1><p class="text-muted mb-4">Sign in to start your shift.</p>
+  <form method="post">{% csrf_token %}
+    {% if form.errors %}<div class="alert alert-danger">Your username or password was incorrect.</div>{% endif %}
+    <div class="mb-3"><label class="form-label" for="id_username">Username</label><input class="form-control" type="text" name="username" autofocus required id="id_username"></div>
+    <div class="mb-4"><label class="form-label" for="id_password">Password</label><input class="form-control" type="password" name="password" required id="id_password"></div>
+    <input type="hidden" name="next" value="{{ next }}"><button class="btn btn-primary w-100">Sign in</button>
+  </form>
+</div></div></div></div>
+{% endblock %}

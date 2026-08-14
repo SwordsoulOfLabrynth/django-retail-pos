@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Adjust stock | Retail POS{% endblock %}
+{% block content %}
+<div class="row justify-content-center"><div class="col-md-6"><div class="card"><div class="card-body"><h1 class="h3">Adjust stock</h1><p><strong>{{ product.name }}</strong><br><span class="text-muted">Current stock: {{ product.stock_quantity }}</span></p><form method="post">{% csrf_token %}<div class="mb-3">{{ form.adjustment.label_tag }}{{ form.adjustment }}{% for error in form.adjustment.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}<div class="form-text">{{ form.adjustment.help_text }}</div></div><button class="btn btn-primary">Update stock</button> <a class="btn btn-outline-secondary" href="{% url 'product_list' %}">Cancel</a></form></div></div></div></div>
+{% endblock %}
