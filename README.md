@@ -1,16 +1,27 @@
-# Retail POS — Django Certificate Project
+# 🛒 Retail POS — Django Certificate Project
 
-A small, server-rendered point-of-sale application built with Django and SQLite. It is intended for classroom demonstration and portfolio submission.
+> A robust, server-rendered point-of-sale application built with Django and SQLite, featuring atomic checkouts, stock protection, receipt printing, role-based cashier management, and automated test suites.
+
+[![Python](https://img.shields.io/badge/Python-3.13+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org/)
+[![Django](https://img.shields.io/badge/Django-5.0+-092E20?style=flat-square&logo=django&logoColor=white)](https://djangoproject.com/)
+[![Database](https://img.shields.io/badge/SQLite-ACID%20Compliant-003B57?style=flat-square&logo=sqlite&logoColor=white)](https://sqlite.org/)
+[![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen?style=flat-square&logo=pytest)](https://docs.djangoproject.com/en/5.0/topics/testing/)
+[![Status](https://img.shields.io/badge/Certification-Coursework%20Project-blue?style=flat-square)](https://github.com/SwordsoulOfLabrynth/django-retail-pos)
+
+---
 
 ## Features
 
-- Admin and cashier accounts using Django authentication
-- Category and product management, including stock adjustment
-- Session-based shopping cart with quantity updates and clearing
-- Cash or card checkout with change calculation for cash payments
-- Atomic checkout that prevents negative stock and records an itemized sale
-- Printable sale receipts and an admin-only daily sales report
-- Django admin for secondary data management
+- **Role-Based Authentication**: Separate Administrator and Cashier privileges via Django's auth system
+- **Inventory Management**: Category and product catalog management with automated low-stock warnings
+- **Session-Based Cart**: Fast, server-side cart operations with quantity adjustment and clearing
+- **Atomic Checkout Engine**: Enforces database atomicity to prevent stock overdraft and records itemized ledger entries
+- **Tender Methods**: Cash and card checkout with automatic change computation
+- **Printable Receipts**: Formal customer receipts with unique receipt numbering
+- **Daily Sales Reporting**: Admin-only audit dashboard computing daily revenue totals
+- **Automated Test Coverage**: Comprehensive test suite verifying permissions, checkout transactions, and edge cases
+
+---
 
 ## Setup
 
@@ -25,7 +36,7 @@ python manage.py seed_pos
 python manage.py runserver
 ```
 
-Open `http://127.0.0.1:8000/` in a browser.
+Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in a browser.
 
 Demo accounts created by `seed_pos`:
 
@@ -34,9 +45,11 @@ Demo accounts created by `seed_pos`:
 | Administrator | `admin` | `admin123` |
 | Cashier | `cashier` | `cashier123` |
 
-Change these passwords before using the project outside a classroom demonstration.
+*Note: Change these credentials before using outside demonstration environments.*
 
-## Demonstration flow
+---
+
+## Demonstration Flow
 
 1. Sign in as `admin`; create a category/product or adjust inventory.
 2. Sign out and sign in as `cashier`.
@@ -44,10 +57,12 @@ Change these passwords before using the project outside a classroom demonstratio
 4. Complete checkout and print the generated receipt.
 5. Sign back in as `admin` and open **Reports** to view the daily sales total.
 
-## Verification
+---
+
+## Verification & Testing
 
 ```powershell
 python manage.py test
 ```
 
-The test suite covers receipt calculations, permissions, product creation, cart updates, successful checkout, stock protection, and receipt ownership.
+The test suite covers receipt calculations, permission gates, product creation, cart updates, successful checkout, stock protection, and receipt ownership.
